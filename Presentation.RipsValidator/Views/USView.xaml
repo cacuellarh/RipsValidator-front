@@ -1,0 +1,51 @@
+﻿<Page x:Class="Presentation.RipsValidator.Views.USView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"      
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewmodel="clr-namespace:Presentation.RipsValidator.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:USViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="USView">
+
+    
+    <Grid Background="White">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <DataGrid
+                ItemsSource="{Binding Rips}"
+                AutoGenerateColumns="False" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="10" 
+                Background="#FFFFFCFC"
+                RowBackground="White" 
+                AlternatingRowBackground="#BFD8FD"
+                GridLinesVisibility="None"
+                BorderThickness="0">
+                <!-- Ajuste del estilo de los encabezados -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Padding" Value="10,5"/>
+                        <!-- O utiliza Margin si prefieres -->
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="T. identificación" Binding="{Binding UserIdentificationType.Value, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="N. identificación" Binding="{Binding UserIdentificationNumber.Value, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Codigo entidad" Binding="{Binding CodeAdministratorEntity.Value,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="T. usuario" Binding="{Binding UserType.Value,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="1er. apellido" Binding="{Binding FirtsLastNameUser,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="2do. apellido" Binding="{Binding SecondLastNameUser ,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="1er. nombre" Binding="{Binding FirtsNameUser , Mode=OneWay}"/>
+                    <DataGridTextColumn Header="2do. nombre" Binding="{Binding SecondNameUser, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Edad" Binding="{Binding Age.Value,  Mode=OneWay}"/>
+                    <DataGridTextColumn Header="U. medida" Binding="{Binding UnitOfMeasurement.Value,  Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Sexo" Binding="{Binding Sex.Value,  Mode=OneWay}"/>
+                    <DataGridTextColumn Header="C.departamento" Binding="{Binding DepartmentCode,  Mode=OneWay}"/>
+                    <DataGridTextColumn Header="C.Municipio" Binding="{Binding MunicipalityCode,  Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Zona de residencia" Binding="{Binding ResidenceArea,  Mode=OneWay}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</Page>

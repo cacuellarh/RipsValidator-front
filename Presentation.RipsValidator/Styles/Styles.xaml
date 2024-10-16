@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="orange_heon">#C45F27</SolidColorBrush>
+    <SolidColorBrush x:Key="main_color_solid">#2155A3</SolidColorBrush>
+    <SolidColorBrush x:Key="button_hover_color_solid">#043681</SolidColorBrush>
+    <SolidColorBrush x:Key="radio_button_hover_solid">#27C4BF</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="button_selected_color_solid">#2A384E</SolidColorBrush>
+    <SolidColorBrush x:Key="background_frame_solid">#ECECEC</SolidColorBrush>
+    <FontFamily x:Key="primary_font">Arial</FontFamily>
+</ResourceDictionary>

@@ -1,0 +1,163 @@
+﻿<Page x:Class="Presentation.RipsValidator.Views.MainWrapper"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Presentation.RipsValidator.Views" xmlns:viewmodel="clr-namespace:Presentation.RipsValidator.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainWrapperViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1100"
+      Title="MainWrapper">
+    
+    <Grid Background="{StaticResource background_frame_solid}" Cursor="">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <!--Titulo de frame-->
+        <TextBlock  
+            Style="{StaticResource TitleTextBlockStyle}"
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="Archivos planos"
+            />
+        
+        <!--Pestañas de archivos-->
+        <WrapPanel 
+            Grid.Column="1"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Style="{StaticResource WrapperStackPanelStyle}"
+            >
+            <RadioButton 
+                Style="{StaticResource RadioButtonPageStyle}"
+                Content="US"
+                Click="NavigateToUSView_Click"
+                Tag="{x:Type local:USView}"
+                />
+            <RadioButton 
+                Content="CT"
+                Style="{StaticResource RadioButtonPageStyle}"
+                Click="NavigateToUSView_Click"
+                Tag="{x:Type local:CTView}" Cursor="Hand"
+                />
+            <RadioButton 
+                Content="AF"
+                 Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AD"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="ET"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AU"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AT"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AH"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AP"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            <RadioButton 
+                Content="AN"
+                Style="{StaticResource RadioButtonPageStyle}"
+                />
+            
+        </WrapPanel>
+        
+        <!--opciones de cargue y comprobacion del archivo-->
+        <Border
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource MainBorderStyle}"
+            >
+            <Border
+                Style="{StaticResource InnerBorderStyle}"
+                >
+                <StackPanel
+                    Style="{StaticResource StackPanelStyle}"
+                    >
+                    <TextBlock 
+                        Text="Cargar archivo plano"
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,0"
+                        FontSize="15"
+                        FontFamily="{StaticResource primary_font}"
+                        />
+                    <Button 
+                        Style="{StaticResource LoadButton}"
+                        Content="Cargar"
+                        Click="{Binding LoadFileButton_Click}"
+                            />
+                    <Button 
+                        Style="{StaticResource LoadButton}"
+                        Content="Comprobar"
+                        Click="{Binding ValidateStructFileRip_Click}"
+                        />
+                    
+                </StackPanel>
+                
+            </Border>
+        </Border>
+
+        <!--data grid de informacion de errores-->
+        <Border
+            Grid.Column="1"
+            Grid.Row="4"
+            Style="{StaticResource MainBorderStyle}"
+            >
+            <Border
+                Style="{StaticResource InnerBorderStyle}"
+                >
+                <Frame x:Name="FilePresentationFrame" NavigationUIVisibility="Hidden"></Frame>
+            </Border>
+        </Border>
+
+        <Border 
+            Grid.Column="1"
+            Grid.Row="5"
+            Style="{StaticResource MainBorderStyle}">
+            <Border  Style="{StaticResource InnerBorderStyle}">
+                
+                <UniformGrid Rows="1" Columns="7" VerticalAlignment="Center">
+                    <TextBlock Text="Estado de validacion"/>
+                    <TextBlock Text="Invalido"/>
+                    <TextBlock Text="Errores encontrados:"/>
+                    <TextBlock Text="{Binding ErrorsLength}"/>
+                    <TextBlock Text="Registros validados:"/>
+                    <TextBlock Text="{Binding RecordsLength}"/>
+                    <Button 
+                            Style="{StaticResource ErrorButton}"
+                            Command="{Binding OpenErrorWindowCommand}"
+                            >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="10" Height="10" Margin="5" Source="/Views/ver-lista.png"/>
+                            <TextBlock Text="Ver errores" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </UniformGrid>
+            </Border>
+        </Border>
+        
+    </Grid>
+</Page>
